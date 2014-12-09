@@ -1,8 +1,9 @@
 == README
 
-This is a sample application that I created through a course at BaseRails.com.
+This is a sample application that I created through a course at [BaseRails](http://www.baserails.com).
 
-## Topics Covered
+Topics Covered
+--------------
 
 * Ruby on Rails
 * HTML and CSS
@@ -12,4 +13,3 @@ This is a sample application that I created through a course at BaseRails.com.
 * Google Maps API
 * Git and Github
 * Heroku
-
