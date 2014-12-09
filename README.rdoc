@@ -1,0 +1,15 @@
+== README
+
+This is a sample application that I created through a course at BaseRails.com.
+
+## Topics Covered
+
+* Ruby on Rails
+* HTML and CSS
+* jQuery
+* Bootstrap
+* SQlite
+* Google Maps API
+* Git and Github
+* Heroku
+
