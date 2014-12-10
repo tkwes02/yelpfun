@@ -17,11 +17,11 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.restaurant_id = @restaurant.id # This fills in the restaurant_id field by using the id of the current restaurant.
+    @review.restaurant_id = @restaurant.id # This fills in the restaurant_id field by using the id of the current restaurant. 
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to root_path, notice: 'Review was successfully created.' }
+        format.html { redirect_to @restaurant, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
