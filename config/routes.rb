@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :reviews, except: [:show, :index]
-
   devise_for :users
-  resources :restaurants
+  resources :restaurants do
+    resources :reviews, except: [:show, :index] # nests this with in restaurants. Changes routes - remember to rake routes to see the new path.
+  end
 
   get 'pages/about'
 
