@@ -10,6 +10,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @reviews = Review.where(restaurant_id: @restaurant.id) # this means when we go to a restaurant review page, we will only see the review for THAT restaurant.
   end
 
   # GET /restaurants/new
