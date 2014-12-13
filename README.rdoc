@@ -2,8 +2,10 @@
 
 This is a sample application that I created through a course at [BaseRails](http://www.baserails.com).
 
-Topics Covered
---------------
+It is currently deployed to Heroku.  View [YelpDemo App](https://yelpdemo-igor.herokuapp.com/).
+
+Topics That Were Covered
+------------------------
 
 * Ruby on Rails
 * HTML and CSS
