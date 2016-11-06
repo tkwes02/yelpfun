@@ -1,6 +1,24 @@
-<h1>Editing restaurant</h1>
+<div class="container-fluid">
+<br><br>
+<div class="col-md-6 col-md-offset-4">
 
+    <div class="header-store-edit">
+        
+       
+              <h4>Edit Business Entry </h4>
+    </div>
+              
+                  
 <%= render 'form' %>
 
-<%= link_to 'Show', @restaurant, class: "btn btn-link" %> |
-<%= link_to 'Back', restaurants_path, class: "btn btn-link" %>
+
+
+</div>
+</div>
+</div>
+ <ul class="pager">
+    <li>
+<%= link_to 'Show', @restaurant %> | </li>
+<li>
+<%= link_to 'Back', restaurants_path %> </li>
+</ul>

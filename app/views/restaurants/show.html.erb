@@ -1,85 +1,158 @@
-<div class="row">
-  <div class="col-md-3">
-    <%= image_tag @restaurant.image_url %>
-      <h2>
-        <%= @restaurant.name %>
-      </h2>
-
-      <div class="star-rating" data-score= <%= @avg_rating %> ></div> 
-      <p><%= "#{@reviews.length} reviews" %></p>
-      <p>
-        <strong>Address:</strong>
-        <%= @restaurant.address %>
-      </p>
-
-      <p>
-        <strong>Phone:</strong>
-        <%= @restaurant.phone %>
-      </p>
-
-      <p>
-        <strong>Website:</strong>
-        <%= link_to @restaurant.website, @restaurant.website %>
-      </p>
+<table class="w3-table-all w3-card-4">
+    
+    <tr>
+        <th class= "w2-cell" >
+          
+           
+            <div class="panel panel-warning">
+               <h4>  <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                <%= @restaurant.name %></h4>
+            
+             </div>      
+            
+            
+            <br>
+            
+    <div align="center">
+           <iframe
+                  width="250"
+                  height="200"
+                  frameborder="0" style="border:0"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBUT392Lmk1gbL-rHOxqRwAeoKnnegfQWU
+                    &q=<%= @restaurant.address.parameterize %>&zoom=14" allowfullscreen>
+            </iframe>
       
-      <%= link_to "Write a Review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
-      <br>
-      <br>
-      <iframe width="230"
-              height="230"
-              frameborder="0" style="border:0"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBNFfK5XKDlNemhDCV4VhnU0LryfGxu5RY
-                &q= <%= @restaurant.address.parameterize %>&zoom=14">
-      </iframe>
-  </div>
-  <div class="col-md-9">
-  <% if @reviews.blank? %>
-    <h3>No Reviews yet. Be the first to write one!</h3>
-  <% else %>
-  <table class="table">
-      <thead>
-      <tr>
-        <th class="col-md-3"></th>
-         <th class="col-md-9"></th>
-        </tr>
-      </thead>
+            
+            </div>
+       
+            
+            
+          </th>
+      <th class= "w2-cell">
+          <div class="star-rating" data-score= <%= @avg_rating %>> </div>
+                  <%= "#{@reviews.length} reviews" %>
+      <br><br>       
+       <%= image_tag @restaurant.image_url %>
+      
+      <br><br>
+      <div class="button button3">
+      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+
+    <%= link_to 'Write a Review', new_restaurant_review_path(@restaurant), class: "btn_actionbutton" %>
+     </div>
+     
+     
+      </th>
+    
+    </tr>
+  
+  
+</table>
+
+<br>
+
+<div class="row">
+  <div class="col-xs-12 col-md-8">
+    
+ 
+    <% if @reviews.blank? %>
+    <div class="header-store-edit">
+    <h4>No Reviews Yet. Be the first one to write!</h4></div>
+    <% else %>
+    
+    <table class="table">
+         <thead>
+              <tr>
+                  <th class="col-md-3"></th>
+                  <th class="col-md-9"></th>
+              </tr>
+          </thead>
+    
       
       <tbody>
-      <% @reviews.each do |review| %>
-        <tr>
-          <td>
-            <h4>
-            <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %></h4>
-            <p><%= review.created_at.strftime("%-m/%-d/%y") %></p>
-          </td>
-          <td>
-            <div class="star-rating" data-score= <%= review.rating %> ></div> 
-            <p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
-
-            <% if user_signed_in? %>
-              <% if (review.user == current_user) || (current_user.admin?) %>
-                <%= link_to "Edit", edit_restaurant_review_path(@restaurant, review) %>
-                <%= link_to "Delete", restaurant_review_path(@restaurant, review), method: :delete %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
+        
+           <% @reviews.each do |review| %>
+         <tr>
+             
+              <td>
+                 <h4><%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %></h4>
+                 <p>
+                     <%= review.created_at.strftime("%-m/%-d/%y") %>
+                     
+                 </p>
+             </td>
+         
+           <td>
+               <div class="star-rating" data-score= <%= review.rating %>> </div>
+          <%= h(review.comment).gsub(/\n/, '<br>').html_safe %>
+              <% if user_signed_in? %>
+              <% if (review.user == current_user) || (current_user_admin?) %>
+              <%= link_to "Edit", edit_restaurant_review_path(@restaurant, review) %>
+              <%= link_to "Delete", restaurant_review_path(@restaurant, review), method: :delete %>
+               <% end %>
+               <% end %>
+           </td>
+           
+         </tr>
+         
+          <% end %>  
+        
       </tbody>
     </table>
-   <% end %>
+ <% end %>   
+ 
+  </div>
+ 
+ 
+  <div class="col-xs-6 col-md-4">
+    
+     <div class="profile-store-box">
+      
+             
+            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+         
+             
+              <%= @restaurant.address %>
+            
+            <hr>
+         
+                 <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+             
+              <%= @restaurant.phone %>
+            <hr>
+            
+          <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+          <%= link_to @restaurant.website, "http://#{@restaurant.website}", :target => '_blank' %>
+             
+           
+         
+
+
+    </div>
+
   </div>
 </div>
+  
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn btn-link" %> |
-<%= link_to 'Back', restaurants_path, class: "btn btn-link" %>
+
+ 
+
+<ul class="pager">
+
+  <li> 
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |  </li>
+  <li> 
+<%= link_to 'Back', restaurants_path %>  </li>
+</ul>
+
+
 
 <script>
- $('.star-rating').raty({
-  path: 'https://s3.amazonaws.com/yelpdemo-igor/stars',
+  $('.star-rating').raty({path:'/assets',
   readOnly: true,
   score: function() {
     return $(this).attr('data-score');
   }
- });
+  });
 </script>
+

@@ -18,4 +18,5 @@ gem 'fog'
 gem 'figaro'
 gem 'mini_magick'
 gem 'devise'
-gem 'searchkick'
+
+gem 'bootstrap-sass', '3.3.1'
