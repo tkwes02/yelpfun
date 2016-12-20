@@ -1,17 +1,1 @@
-== README
 
-This is a sample application that I created through a course at [BaseRails](http://www.baserails.com).
-
-It is currently deployed to Heroku.  View [YelpDemo App](https://yelpdemo-igor.herokuapp.com/).
-
-Topics That Were Covered
-------------------------
-
-* Ruby on Rails
-* HTML and CSS
-* jQuery
-* Bootstrap
-* SQlite
-* Google Maps API
-* Git and Github
-* Heroku
